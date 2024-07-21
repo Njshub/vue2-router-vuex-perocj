@@ -1,29 +1,59 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import HomeView from '../views/HomeView.vue'
-
+import Home from '@/views/home/home.vue'
+import Login from '@/views/login/index.vue'
+import User from '@/views/user/index.vue'
+import Cart from '@/views/Cart/Cart.vue'
+import Cartdetsill from '@/views/Cart/Cartdetsill.vue'
 Vue.use(VueRouter)
-
+/**
+ *    
+ *   props  组件接收路由传参数据
+ * 
+ */
 const routes = [
   {
     path: '/',
-    name: 'home',
-    component: HomeView
+    redirect: '/Home'
   },
   {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+    path: '/Home',
+    name: 'Home',
+    component: Home
+  },
+  {
+    path: '/Login',
+    name: 'Login',
+    component: Login
+  }
+  ,
+  {
+    path: '/User',
+    name: 'User',
+    component: User
+  },
+  {
+    path: '/Cart/:id',
+    name: 'Cart',
+    component: Cart,
+    props: true
+  },
+  {
+    path: '/Cartdetsill',
+    name: 'Cartdetsill',
+    component: Cartdetsill
   }
 ]
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: 'history', // 路静上有#号
   base: process.env.BASE_URL,
   routes
+})
+//守卫导航，全局
+router.beforeEach((to,from,next)=>{
+   console.log('的方法')
+   next()  // 如果没有next 什么都没干
 })
 
 export default router
