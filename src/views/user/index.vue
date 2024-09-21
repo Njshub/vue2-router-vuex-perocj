@@ -1,20 +1,25 @@
 <template>
-  <div>
-      <h1>个人中心</h1>
+  <div class="userr-app">
+    <NavBar />
+    <SideBar></SideBar>
   </div>
 </template>
 
 <script>
+import NavBar from "@/views/user/components/NavBar.vue";
+import SideBar from "@/views/user/components/SideBar.vue";
 export default {
-    name: 'User',
-    data() {
-        return {
-            
-        }
-    }
-    }
+  components: {
+    NavBar,
+    SideBar,
+  },
+};
 </script>
 
-<style>
-
+<style lang="less" scoped>
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
 </style>
